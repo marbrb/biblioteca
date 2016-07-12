@@ -1,0 +1,12 @@
+<html>
+<head><title>Meta data</title></head>
+<body>
+<h1>Atributos y métodos del objeto HTTPRequest</h1>
+<p>Request.path: {{path}}</p>
+<p>Request.is_secure(): {{secure}}</p>
+<p>Cabeceras HTTP</p>
+{% for clave, valor in lista%}
+  <li>{{ clave }} : {{valor}} </li>
+{% endfor %}
+</body>
+</html>
