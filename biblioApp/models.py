@@ -31,7 +31,7 @@ class Libro(models.Model):
     autores = models.ManyToManyField(Autor)
     editor = models.ForeignKey(Editor)   #un solo editor
     fecha_publicacion = models.DateField(blank=True, null=True)
-    portada = models.ImageField(upload_to='portadas', default=None)   #apt-get install libjpeg-dev
+    portada = models.ImageField(upload_to='portadas',blank=True, default=None)   #apt-get install libjpeg-dev
 
 
     def __str__(self):
