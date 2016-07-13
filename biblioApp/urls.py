@@ -3,6 +3,7 @@ from biblioApp.views import *
 
 urlpatterns = [
     url(r'^meta/$', atributos_meta),
-    url(r'^formulario-buscar/$', form_buscar),
-    url(r'^buscar/$', buscar)
+    url(r'^buscar/$', buscar),
+    url(r'^contactos/$', contactos),
+    url(r'^contactos/gracias/$', exito),
 ]
