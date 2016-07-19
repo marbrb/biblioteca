@@ -1,7 +1,9 @@
-from django.shortcuts import render_to_response
+
+from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect
 from biblioApp.models import Libro
 from django.core.mail import send_mail
+from biblioApp.forms import FormularioContactos
 
 
 def atributos_meta(request):
@@ -26,30 +28,20 @@ def buscar(request):
 def exito(request):
     return render_to_response('exito.html')
 
-#esto debería ir en una nueva app?
+
 def contactos(request):
-    errors = []
     if request.method == 'POST':
-        if not request.POST.get('asunto', ''):
-            errors.append('Por favor introduce el asunto.')
-        elif not request.POST.get('mensaje', ''):
-            errors.append('Por favor introduce un mensaje.')
-        elif request.POST.get('email') and '@' not in request.POST['email']:
-            errors.append('Por favor introduce una direccion de e­mail valida.')
-        if not errors:
+        #request.GET/POST es un diccionario que permite el acceso a datos(get/post)
+        form = FormularioContactos(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data #diccionario de datos enviados 'Limpiamente'
             send_mail(
-                request.POST['asunto'],
-                request.POST['mensaje'],
-                request.POST.get('email', 'noreply@example.com'),
+                cd['asunto'],
+                cd['mensaje'],
+                cd.get('email', 'noremply@example.com'),
                 ['siteowner@example.com'],
             )
-
             return HttpResponseRedirect('/contactos/gracias/')
-
-    return render_to_response(
-        'contactos.html',
-         {'errors': errors,
-         'asunto': request.POST.get('asunto', ''),
-         'mensaje': request.POST.get('mensaje', ''),
-         'email': request.POST.get('email', ''),}
-    )
+    else:
+        form = FormularioContactos()
+    return render(request, 'contactos.html', {'form':form})
