@@ -34,7 +34,7 @@ def contactos(request):
         #request.GET/POST es un diccionario que permite el acceso a datos(get/post)
         form = FormularioContactos(request.POST)
         if form.is_valid():
-            cd = form.cleaned_data #diccionario de datos del form
+            cd = form.cleaned_data #diccionario de datosque se enviaron bien del form
             send_mail(
                 cd['asunto'],
                 cd['mensaje'],
@@ -43,5 +43,5 @@ def contactos(request):
             )
             return HttpResponseRedirect('/contactos/gracias/')
     else:
-        form = FormularioContactos()
+        form = FormularioContactos(initial={'asunto':'¡Adoro tu sitio!'})
     return render(request, 'contactos.html', {'form':form})
