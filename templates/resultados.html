@@ -1,12 +1,22 @@
-<p>Estas buscado: <strong>{{ query }}</strong></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Resultados</title>
+  </head>
+  <body>
+    <p>Estas buscado: <strong>{{ query }}</strong></p>
 
-{% if libros %}
-  <p>Libros encontrados: {{ libros|length }} libro{{ libros|pluralize }}.</p>
-  <ul>
-    {% for libro in libros %}
-      <li> {{ libro.titulo }} </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>Ningún libro coincide con el criterio de búsqueda.</p>
-{% endif %}
+    {% if libros %}
+      <p>Libros encontrados: {{ libros|length }} libro{{ libros|pluralize }}.</p>
+      <ul>
+        {% for libro in libros %}
+          <li> {{ libro.titulo }} </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Ningún libro coincide con el criterio de búsqueda.</p>
+    {% endif %}
+  </body>
+  {% include 'footer.html' %}
+</html>
