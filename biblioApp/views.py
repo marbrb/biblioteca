@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect # or django.shortcuts.redirect
 from biblioApp.models import Libro
 from django.core.mail import send_mail
 from biblioApp.forms import FormularioContactos
