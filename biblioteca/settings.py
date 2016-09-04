@@ -1,4 +1,3 @@
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -39,6 +38,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',   #clickjacking protection
+    'biblioApp.middleware.PaisMiddleware',
 ]
 
 ROOT_URLCONF = 'biblioteca.urls'
