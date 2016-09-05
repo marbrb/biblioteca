@@ -8,9 +8,10 @@ def randomCountry():
 
 class PaisMiddleware(object):
     def process_request(self, request):
-        country = randomCountry()
-        if country == 'Chile':
-            return redirect('http://localhost:8000/buscar/')    #que flojera hacer una vista para chile
-
+        pass
+        # country = randomCountry()
+        # if country == 'Chile':
+        #     return redirect('http://localhost:8000/buscar/')    #que flojera hacer una vista para chile
+        #
 
     #Tambien esta process response
